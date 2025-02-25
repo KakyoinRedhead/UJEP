@@ -22,3 +22,31 @@ print(dir(type(x)))
 x = 42
 print(x.__class__)
 print(x.__class__.__name__)
+
+
+class Range: 
+    def __init__(self, a: int,b: int|None = None, step:int|None = None):
+        self.step = 1 if step is None else step 
+        if not self.step: raise ValueError('wrong step')
+
+        self.val = 0 if b is None else a
+        self.end = a if b is None else b 
+
+    def __iter__(self):
+        return self
+    
+    def __next__(self) -> int:
+        if self.step < 0:
+            if self.val <= self.end:
+                raise StopIteration
+            else:
+                if self.end <= self.val:
+                    raise StopIteration
+            
+            val = self.val
+            self.val += self.stop 
+
+            return val
+
+for i in Range(14): print(i, end=' ')
+print()

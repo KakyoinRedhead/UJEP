@@ -50,3 +50,5 @@ class Range:
 
 for i in Range(14): print(i, end=' ')
 print()
+for i in Range(0,14): print(i, end=' ')
+print()
